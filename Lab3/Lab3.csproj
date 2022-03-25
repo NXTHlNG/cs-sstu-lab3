@@ -211,16 +211,16 @@
     <Compile Include="Migrations\202203251219398_addNav.Designer.cs">
       <DependentUpon>202203251219398_addNav.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203251609288_InsertData.cs" />
+    <Compile Include="Migrations\202203251609288_InsertData.Designer.cs">
+      <DependentUpon>202203251609288_InsertData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Store.mdf" />
-    <Content Include="App_Data\Store_log.ldf">
-      <DependentUpon>Store.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -272,6 +272,9 @@
     <EmbeddedResource Include="Migrations\202203251219398_addNav.resx">
       <DependentUpon>202203251219398_addNav.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203251609288_InsertData.resx">
+      <DependentUpon>202203251609288_InsertData.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -285,6 +288,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
