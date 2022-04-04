@@ -47,7 +47,7 @@ namespace Lab3.Controllers
         // Дополнительные сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Description")] Order order)
+        public ActionResult Create([Bind(Include = "Id,Description, CustomerId")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace Lab3.Controllers
         // Дополнительные сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Description")] Order order)
+        public ActionResult Edit([Bind(Include = "Id,Description,CustomerId")] Order order)
         {
             if (ModelState.IsValid)
             {

@@ -215,6 +215,10 @@
     <Compile Include="Migrations\202203251609288_InsertData.Designer.cs">
       <DependentUpon>202203251609288_InsertData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204041525561_migr.cs" />
+    <Compile Include="Migrations\202204041525561_migr.Designer.cs">
+      <DependentUpon>202204041525561_migr.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Order.cs" />
@@ -274,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203251609288_InsertData.resx">
       <DependentUpon>202203251609288_InsertData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204041525561_migr.resx">
+      <DependentUpon>202204041525561_migr.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
