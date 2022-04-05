@@ -11,112 +11,107 @@ using Lab3.Models;
 
 namespace Lab3.Controllers
 {
-    public class OrdersController : Controller
+    public class Customers1Controller : Controller
     {
         private StoreContext db = new StoreContext();
 
-        // GET: Orders
+        // GET: Customers1
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.Customer);
-            return View(orders.ToList());
+            return View(db.Customers.ToList());
         }
 
-        // GET: Orders/Details/5
+        // GET: Customers1/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
-            if (order == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(order);
+            return View(customer);
         }
 
-        // GET: Orders/Create
+        // GET: Customers1/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name");
             return View();
         }
 
-        // POST: Orders/Create
+        // POST: Customers1/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. 
         // Дополнительные сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Description,CustomerId")] Order order)
+        public ActionResult Create([Bind(Include = "Id,Name")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Orders.Add(order);
+                db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", order.CustomerId);
-            return View(order);
+            return View(customer);
         }
 
-        // GET: Orders/Edit/5
+        // GET: Customers1/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
-            if (order == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", order.CustomerId);
-            return View(order);
+            return View(customer);
         }
 
-        // POST: Orders/Edit/5
+        // POST: Customers1/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. 
         // Дополнительные сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Description,CustomerId")] Order order)
+        public ActionResult Edit([Bind(Include = "Id,Name")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(order).State = EntityState.Modified;
+                db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name", order.CustomerId);
-            return View(order);
+            return View(customer);
         }
 
-        // GET: Orders/Delete/5
+        // GET: Customers1/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
-            if (order == null)
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
             {
                 return HttpNotFound();
             }
-            return View(order);
+            return View(customer);
         }
 
-        // POST: Orders/Delete/5
+        // POST: Customers1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Order order = db.Orders.Find(id);
-            db.Orders.Remove(order);
+            Customer customer = db.Customers.Find(id);
+            db.Customers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
