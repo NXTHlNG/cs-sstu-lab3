@@ -3,9 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-
 <h2>Index</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -23,9 +21,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
             <td style="padding:0">
                 @if (item.Orders.Count > 0)
                 {
@@ -40,12 +36,9 @@
                                 <td style="width:150px">
                                     @Html.ActionLink(order.Id.ToString(), "Details", "Orders", new { id = order.Id }, null)
                                 </td>
-                                <td>
-                                    @order.Description
-                                </td>
+                                <td>@order.Description</td>
                             </tr>
                         }
-
                     </table>
                 }
             </td>
@@ -56,5 +49,4 @@
             </td>
         </tr>
     }
-
 </table>

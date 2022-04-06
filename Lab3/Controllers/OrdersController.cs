@@ -15,14 +15,12 @@ namespace Lab3.Controllers
     {
         private StoreContext db = new StoreContext();
 
-        // GET: Orders
         public ActionResult Index()
         {
             var orders = db.Orders.Include(o => o.Customer);
             return View(orders.ToList());
         }
 
-        // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,16 +35,12 @@ namespace Lab3.Controllers
             return View(order);
         }
 
-        // GET: Orders/Create
         public ActionResult Create()
         {
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Name");
             return View();
         }
 
-        // POST: Orders/Create
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. 
-        // Дополнительные сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Description,CustomerId")] Order order)
@@ -62,7 +56,6 @@ namespace Lab3.Controllers
             return View(order);
         }
 
-        // GET: Orders/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,9 +71,6 @@ namespace Lab3.Controllers
             return View(order);
         }
 
-        // POST: Orders/Edit/5
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. 
-        // Дополнительные сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Description,CustomerId")] Order order)
@@ -95,7 +85,6 @@ namespace Lab3.Controllers
             return View(order);
         }
 
-        // GET: Orders/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,7 +99,6 @@ namespace Lab3.Controllers
             return View(order);
         }
 
-        // POST: Orders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
